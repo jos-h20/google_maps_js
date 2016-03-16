@@ -28,19 +28,27 @@ $( document ).ready(function() {
 
   var latitude = parseInt($('#set_lat').val());
   var longitude = parseInt($('#set_long').val());
-  var userLatLng = new google.maps.LatLng(latitude, longitude);
-  var myOptions = {
-    zoom : 16,
-    center : userLatLng,
-    mapTypeId : google.maps.MapTypeId.ROADMAP
+  var positionObject = {
+    "coords": {
+      "latitude": latitude,
+      "longitude": longitude
+    }
   };
-  // Draw the map - you have to use 'getElementById' here.
-  var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
-  // Place the marker
-  new google.maps.Marker({
-    map: mapObject,
-    position: userLatLng
-  });
+  geolocationSuccess(positionObject);
+  // var userLatLng = new google.maps.LatLng(latitude, longitude);
+
+  // var myOptions = {
+  //   zoom : 16,
+  //   center : userLatLng,
+  //   mapTypeId : google.maps.MapTypeId.ROADMAP
+  // };
+  // // Draw the map - you have to use 'getElementById' here.
+  // var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+  // // Place the marker
+  // new google.maps.Marker({
+  //   map: mapObject,
+  //   position: userLatLng
+  // });
 
 
   $('#your_lat').html("<h3> Your latitude is set for "+ latitude +"</h3>");
