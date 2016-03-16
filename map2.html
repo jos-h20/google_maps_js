@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/style.css">
+      <script src="build/js/vendor.min.js"></script>
+      <script src="bower_components/moment/min/moment.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0OJU111b6ugzaIn8ajRCYQysvb-3cW0w" async defer></script>
+      <script type="text/javascript" src="build/js/app.js"></script>
+      <title>Simple Map</title>
+          <meta name="viewport" content="initial-scale=1.0">
+          <meta charset="utf-8">
+
+  </head>
+        <body>
+          <div class="container">
+            <div class="jumbotron">
+              <h1>Awesome Maps</h1>
+            </div>
+            <button id="show-map" type="button" name="button">click me</button>
+            <!-- <div id="map1" class="col-sm-6">
+            </div> -->
+      <div  class="col-sm-6">
+
+        <form id="map_form1">
+          <label for="set_lat">Set Latitude:</label>
+          <input id="set_lat" type="number">
+          <label for="set_long">Set Longitude:</label>
+          <input id="set_long" type="number">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <h1>Where you at:</h1>
+      <button id="locateUser">Get Location</button>
+      <h2><a href="index.html">Home</a></h2>
+
+    </div>
+  </body>
+</html>

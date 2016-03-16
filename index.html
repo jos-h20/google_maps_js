@@ -6,13 +6,103 @@
     <link rel="stylesheet" href="build/css/style.css">
       <script src="build/js/vendor.min.js"></script>
       <script src="bower_components/moment/min/moment.min.js"></script>
+      <!-- <script type="text/javascript" src="js/map.js"></script> -->
+      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0OJU111b6ugzaIn8ajRCYQysvb-3cW0w" async defer></script> -->
       <script type="text/javascript" src="build/js/app.js"></script>
-    <title>Something</title>
+      <title>Simple Map</title>
+          <meta name="viewport" content="initial-scale=1.0">
+          <meta charset="utf-8">
+
   </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
+        <body>
+          <div class="container">
+            <div class="jumbotron">
+              <h1>Awesome Maps</h1>
+            </div>
+          <div id="map" class="col-sm-6">
+
+          </div>
+          <address>
+            45.5894, -121.629
+          </address>
+          <address>
+            45.6548, -121.549
+          </address>
+          <address>
+            645 SE Madison St
+          </address>
+      <div  id="map1" class="col-sm-6">
+
+        <form id="map_form">
+          <label for="set_lat">Set Latitude:</label>
+          <input id="set_lat" type="number">
+          <label for="set_long">Set Longitude:</label>
+          <input id="set_long" type="number">
+          <button type="submit">Submit</button>
+        </form>
       </div>
+      <h1>Where you at:</h1>
+      <button id="locateUser">Get Location</button>
+
+      <h2><a href="map2.html">Bend</a></h2>
+
     </div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0OJU111b6ugzaIn8ajRCYQysvb-3cW0w"></script>
+    <script type="text/javascript">
+    // $("#locations").prepend('<div id="map"></div>');
+    // $(".static_map").remove();
+    var map;
+    var bounds;
+    var geocoder;
+    var center;
+
+    function setUrl(url) {
+		top.location.href= url;
+	  }
+
+    function initialize() {
+      var mapOptions = {
+        center: new google.maps.LatLng(45, 123),
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map"),
+        mapOptions);
+      geocoder = new google.maps.Geocoder();
+      bounds = new google.maps.LatLngBounds();
+    }
+    var labels = '123456789';
+    var labelIndex = 0;
+    var image = "./../images/transport.png";
+    // var marker;
+    function addMarkerToMap(location){
+      var marker = new google.maps.Marker({map: map, position: location, icon: image, title:"test" });
+      bounds.extend(location);
+      map.fitBounds(bounds);
+
+      google.maps.event.addListener(marker, 'click', function() {
+         setUrl('map2.html');
+      });
+    };
+    initialize();
+
+    $("address").each(function(){
+      var $address = $(this);
+      geocoder.geocode({address: $address.text()}, function(results, status){
+        if(status == google.maps.GeocoderStatus.OK) addMarkerToMap(results[0].geometry.location);
+      });
+    });
+
+
+
+    google.maps.event.addDomListener(map, "idle", function(){
+      center = map.getCenter();
+    });
+
+    $(window).resize(function(){
+      map.setCenter(center);
+    });
+
+    </script>
   </body>
 </html>

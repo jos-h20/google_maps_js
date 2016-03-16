@@ -1,6 +1,6 @@
 {
-  "name": "template",
-  "description": "default",
+  "name": "google_maps",
+  "description": "explore google maps api",
   "main": "gulpfile.js",
   "license": "ISC",
   "moduleType": [],

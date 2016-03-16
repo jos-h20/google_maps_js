@@ -1,29 +1,18 @@
 var expect = require('chai').expect;
-var Class = require('./../js/class.js').Class;
+var Map = require('./../js/map.js').Map;
 
-describe("Class", function() {
+describe("Map", function() {
   it("will return the current property", function() {
-    var currentProperty = "12:00";
-    var setProperty = "12:00";
-    var testClass = new Class(currentProperty, setProperty);
-    expect(testClass.currentProperty).to.equal(currentProperty);
+    var latitude = "45";
+    var longitude = "120";
+    var testMap = new Map(latitude, longitude);
+    expect(testMap.latitude).to.equal(latitude);
   });
   it("will return the set property", function() {
-    var currentProperty= "12:00";
-    var setProperty= "12:00";
-    var testClass = new Class(currentProperty, setProperty);
-    expect(testClass.setProperty).to.equal(setProperty);
+    var latitude= "45";
+    var longitude= "120";
+    var testMap = new Map(latitude, longitude);
+    expect(testMap.longitude).to.equal(longitude);
   });
-  it("will trigger a freakish alarm", function() {
-    var currentProperty = "12:00";
-    var setProperty = "12:00";
-    var testClass = new Class(currentProperty, setProperty);
-    expect(testClass.triggerAlarm(currentProperty, setProperty)).to.equal(true);
-  });
-  it("will trigger a freakish alarm", function() {
-    var currentProperty = "12:00";
-    var setProperty = "12:05";
-    var testClass = new Class(currentProperty, setProperty);
-    expect(testClass.triggerAlarm(currentProperty, setProperty)).to.equal(false);
-  });
+
 });

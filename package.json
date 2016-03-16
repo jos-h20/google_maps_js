@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "google_maps",
   "version": "1.0.0",
   "description": "an awesome alarm clock",
   "main": "gulpfile.js",
